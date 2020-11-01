@@ -1,13 +1,22 @@
-const express = require('express');
+// ( function() { // no need for this
+'use strict'
 
-const app = express();
+//const enableDestroy = require( 'server-destroy' )
+const app = require('express')()
+const http = require('http')
 
-app.get('/', (req, res) => {
-  res.send('ci with travis');
-});
+let val = 0
 
-const server = app.listen(3000, () => {
-  console.log('App running on port 3000');
-});
+app.use('/inc', (req, res) => {
+    val++
+    res.send(val.toString())
+})
 
-module.exports = server;
+const server = http.createServer(app)
+
+server.listen(3000)
+
+// enableDestroy(server);    
+module.exports = server
+
+// } )()
