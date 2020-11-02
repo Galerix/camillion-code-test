@@ -1,22 +1,29 @@
-// ( function() { // no need for this
 'use strict'
 
-//const enableDestroy = require( 'server-destroy' )
-const app = require('express')()
-const http = require('http')
+var mongoose = require('mongoose');
+const app = require('./app');
+const DB_URI = 'mongodb://localhost:27017/camilliondb';
 
-let val = 0
+const PORT = process.env.PORT || 3800;
 
-app.use('/inc', (req, res) => {
-    val++
-    res.send(val.toString())
-})
+//database conexion
+function connect() {
+    return new Promise((resolve, reject) => {
+        mongoose.connect(DB_URI, { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false })
+            .then((res, err) => {
+                if (err) return reject(err);
+                resolve();
+                console.log("The connection to the camillion database was successful.");
+                app.listen(PORT, () => {
+                    console.log("Server running on http://localhost:" + PORT);
+                })
+            })
+    })
+}
 
-const server = http.createServer(app)
+function close() {
+    return mongoose.disconnect();
+}
 
-server.listen(3000)
 
-// enableDestroy(server);    
-module.exports = server
-
-// } )()
+module.exports = { connect, close };
