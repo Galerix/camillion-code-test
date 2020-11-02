@@ -2,10 +2,11 @@ let chai = require('chai');
 let chaiHttp = require('chai-http');
 const expect = require('chai').expect;
 
+const app = require('../../../app.js');
 const conn = require('../../../index.js');
 
 chai.use(chaiHttp);
-const url = 'http://localhost:3800/api';
+const url= 'http://localhost:3800/api';
 
 
 describe('POST /news', () => {
@@ -23,10 +24,11 @@ describe('POST /news', () => {
         chai.request(url)
             .post('/news')
             .send({ name: 'NEWS NAME', text: 'NEWS TEXT' })
-            .then((res) => {
+            .end((err, res) => {
+                console.log(res.body)
                 expect(res).to.have.status(200);
                 done();
-            })
-            .catch((err) => done(err));
+            });
     })
 })
+
