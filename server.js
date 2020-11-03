@@ -50,6 +50,7 @@ app.use((req, res, next) => {
 //routes
 app.use('/api', news_routes);
 
+//starting server
 app.listen(port, () => {
     console.log("Server running on http://localhost:" + port);
 });
