@@ -21,7 +21,7 @@ function createToken(user){
     return jwt.encode(payload, secret);
 }
 
-function simulatedUser(){
+function simulatedAdminUser(){
     var user = new User();
     user.name = "admin";
     user.surname = "admin";
@@ -35,7 +35,22 @@ function simulatedUser(){
     return user;
 }
 
+function simulatedNormalUser(){
+    var user = new User();
+    user.name = "user";
+    user.surname = "user";
+    user.nick = "user";
+    user.email = "user@user.com"
+    user.role = 'ROLE_USER';
+    bcrypt.hash("user", null, null, (err,hash) => {
+        user.password = hash;
+        if(err) console.log(err);
+    });
+    return user;
+}
+
 module.exports = {
     createToken,
-    simulatedUser
+    simulatedAdminUser,
+    simulatedNormalUser
 }

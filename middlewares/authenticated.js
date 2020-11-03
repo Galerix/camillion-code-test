@@ -7,10 +7,11 @@ var secret = 'secret_key_camillion';
 
 exports.ensureAuth = function (req, res, next) {
 
-    if (!req.headers.authorization) {
-        var token = jwtService.createToken(jwtService.simulatedUser());
+    //In a real case, it would take the token from the authentication header instead of generating it.
+    if (req.headers.authorization == "admin") {
+        var token = jwtService.createToken(jwtService.simulatedAdminUser());
     } else {
-        var token = req.headers.authorization.replace(/['"]+/g, '');
+        var token = jwtService.createToken(jwtService.simulatedNormalUser());
     }    
 
     try {
