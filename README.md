@@ -84,6 +84,9 @@ You can post a news item by making a POST request to http://localhost:3080/api/n
 You can get all home news by making a GET request to http://localhost:3080/api/news. The news will be ordered in pages, four news will appear per page (you can change the news per page) and you can select which page of the news by adding the number to the address in this way: http://localhost:3080/api/news/2. You need to write "admin" or "user" in the Authorization header otherwise you will not be able to get any news.
 
 The functions can be found in ````controllers/homenews.js````.
+
+To make requests you can use [Postman](https://www.postman.com/).
+
 <!-- TESTS -->
 ## Tests
 To ensure the quality of the project I used [Mocha](https://mochajs.org/) and [Chai](https://www.chaijs.com/) to perform unit tests, also I used [Travis](https://travis-ci.com/) for continuous integration, you can see the builds [here](https://travis-ci.com/github/Galerix/camillion-code-test).
@@ -127,3 +130,4 @@ Project Link: [https://github.com/Galerix/camillion-code-test](https://github.co
 * [Chai-http](https://www.chaijs.com/plugins/chai-http/)
 * [Nodemon](https://nodemon.io/)
 * [MongoDB](https://www.mongodb.com/)
+* [Postman](https://www.postman.com/)
