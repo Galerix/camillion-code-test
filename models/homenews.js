@@ -3,6 +3,9 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
+/*
+* News schema
+*/
 var HomeNewsSchema = Schema({
     name: String,
     text: String,

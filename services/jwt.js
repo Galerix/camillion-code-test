@@ -6,6 +6,9 @@ var secret = 'secret_key_camillion';
 var User = require('../models/user');
 var bcrypt = require('bcrypt-nodejs');
 
+/*
+* Token generation function
+*/
 function createToken(user){
     var payload = {
         sub: user._id,
@@ -21,6 +24,9 @@ function createToken(user){
     return jwt.encode(payload, secret);
 }
 
+/*
+* Admin generation function
+*/
 function simulatedAdminUser(){
     var user = new User();
     user.name = "admin";
@@ -35,6 +41,9 @@ function simulatedAdminUser(){
     return user;
 }
 
+/*
+* User generation function
+*/
 function simulatedNormalUser(){
     var user = new User();
     user.name = "user";
@@ -49,6 +58,7 @@ function simulatedNormalUser(){
     return user;
 }
 
+//exporting the functions
 module.exports = {
     createToken,
     simulatedAdminUser,
