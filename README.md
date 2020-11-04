@@ -81,7 +81,7 @@ npm start
 ##### Post a news item
 You can post a news item by making a POST request to http://localhost:3080/api/news passing it as parameters the name and the text. You need to write "admin" in the Authorization header otherwise you will not be able to post any news.
 ##### Get home news
-You can get all home news by making a GET request to http://localhost:3080/api/news. The news will be ordered in pages, four news will appear per page (you can change the news per page) and you can select which page of the news by adding the number to the address in this way: http://localhost:3080/api/new/2. You need to write "admin" or "user" in the Authorization header otherwise you will not be able to get any news.
+You can get all home news by making a GET request to http://localhost:3080/api/news. The news will be ordered in pages, four news will appear per page (you can change the news per page) and you can select which page of the news by adding the number to the address in this way: http://localhost:3080/api/news/2. You need to write "admin" or "user" in the Authorization header otherwise you will not be able to get any news.
 
 The functions can be found in ````controllers/homenews.js````.
 <!-- TESTS -->
